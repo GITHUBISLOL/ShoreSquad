@@ -1,0 +1,29 @@
+{
+  "name": "shoresquad",
+  "version": "1.0.0",
+  "description": "Rally your crew, track weather, and hit the next beach cleanup!",
+  "main": "js/app.js",
+  "scripts": {
+    "start": "live-server",
+    "dev": "live-server --port=5500",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "beach",
+    "cleanup",
+    "environment",
+    "social",
+    "map",
+    "weather",
+    "youth"
+  ],
+  "author": "ShoreSquad Team",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/shoresquad.git"
+  }
+}
