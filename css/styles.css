@@ -181,6 +181,89 @@ body {
     flex-wrap: wrap;
 }
 
+/* ---- NEXT CLEANUP SPOTLIGHT ---- */
+.next-cleanup-spotlight {
+    background: linear-gradient(135deg, #FFE5B4 0%, var(--color-secondary) 100%);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-lg);
+    box-shadow: 0 4px 20px rgba(255, 107, 107, 0.2);
+    border: 2px solid var(--color-coral);
+    position: relative;
+    overflow: hidden;
+}
+
+.next-cleanup-spotlight::before {
+    content: '🌊';
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    font-size: 8rem;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.spotlight-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    position: relative;
+    z-index: 1;
+}
+
+.spotlight-badge {
+    background: var(--color-coral);
+    color: white;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.875rem;
+    white-space: nowrap;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.next-cleanup-spotlight h3 {
+    color: var(--color-dark);
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.spotlight-description {
+    color: var(--color-dark);
+    margin: var(--spacing-sm) 0;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+}
+
+.spotlight-coords {
+    color: #555;
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-md);
+    position: relative;
+    z-index: 1;
+    font-family: var(--font-mono);
+}
+
+.google-maps-embed {
+    width: 100%;
+    height: 300px;
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-lg);
+    box-shadow: var(--shadow-md);
+    display: block;
+}
+
 /* ---- CREW VIEW ---- */
 .crew-header {
     display: flex;
@@ -566,6 +649,23 @@ body {
         width: 100%;
     }
 
+    .google-maps-embed {
+        height: 250px;
+    }
+
+    .next-cleanup-spotlight {
+        padding: var(--spacing-md);
+    }
+
+    .spotlight-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .next-cleanup-spotlight h3 {
+        font-size: 1.25rem;
+    }
+
     .map-controls .btn {
         flex: 1;
     }
@@ -610,6 +710,10 @@ body {
         height: 300px;
     }
 
+    .google-maps-embed {
+        height: 200px;
+    }
+
     .stat-card {
         padding: var(--spacing-md);
     }
@@ -620,6 +724,15 @@ body {
 
     .crew-list {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .spotlight-badge {
+        font-size: 0.75rem;
+        padding: var(--spacing-xs) var(--spacing-sm);
+    }
+
+    .next-cleanup-spotlight h3 {
+        font-size: 1.1rem;
     }
 }
 

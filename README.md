@@ -1,4 +1,5 @@
 # ShoreSquad
+
 # Rally your crew, track weather, and hit the next beach cleanup!
 
 ## Project Structure
@@ -19,6 +20,7 @@ ShoreSquad/
 ## Getting Started
 
 ### Prerequisites
+
 - Live Server extension for VS Code
 - Modern browser with geolocation support
 - Node.js (optional, for future backend integration)
@@ -26,16 +28,19 @@ ShoreSquad/
 ### Installation & Setup
 
 1. **Clone or download the project**
+
    ```bash
    cd ShoreSquad
    ```
 
 2. **Install Live Server Extension in VS Code**
+
    - Open VS Code Extensions (Ctrl+Shift+X)
    - Search for "Live Server" by Ritwick Dey
    - Click Install
 
 3. **Start the development server**
+
    - Right-click `index.html`
    - Select "Open with Live Server"
    - Browser opens at `http://localhost:5500`
@@ -50,32 +55,38 @@ ShoreSquad/
 ## Features
 
 ### 🗺️ Interactive Map
+
 - Real-time beach cleanup events on Leaflet map
 - Geolocation support to find cleanups near you
 - Click to view event details and join
 
 ### 🌤️ Weather Integration
+
 - Current weather conditions at selected location
 - Temperature, humidity, and wind speed
 - Helps plan beach cleanup timing
 
 ### 👥 Crew Management
+
 - Create and invite crew members
 - Track crew statistics (cleanups, impact, streak)
 - Social features for team coordination
 
 ### 🎯 Event Creation
+
 - Easy event creation modal
 - Set date, time, location, and capacity
 - Share with crew for group coordination
 
 ### 📊 Profile & Achievements
+
 - Personal dashboard with stats
 - Badge system for milestones
 - Customizable profile settings
 - Data export functionality
 
 ### 📱 Progressive Web App
+
 - Works offline with Service Worker
 - Responsive design for all devices
 - Add to home screen capability
@@ -84,6 +95,7 @@ ShoreSquad/
 ## Technology Stack
 
 ### Frontend
+
 - **HTML5** - Semantic markup
 - **CSS3** - Modern styling with custom properties
 - **Vanilla JavaScript** - No dependencies (except Leaflet & OpenWeatherMap)
@@ -91,6 +103,7 @@ ShoreSquad/
 - **LocalStorage** - Client-side data persistence
 
 ### Performance Optimizations
+
 - Lazy loading for images
 - Service Worker caching strategy
 - Minified assets
@@ -98,6 +111,7 @@ ShoreSquad/
 - Debounced event handlers
 
 ### Accessibility
+
 - WCAG AA compliance
 - Semantic HTML structure
 - ARIA labels and roles
@@ -107,22 +121,24 @@ ShoreSquad/
 
 ## Color Palette
 
-| Color | Hex | Usage |
-|-------|-----|-------|
-| Ocean Blue | #0066CC | Primary buttons, headers, accents |
-| Sandy Beige | #F4E4C1 | Secondary buttons, backgrounds |
-| Eco Green | #00CC66 | Success states, accent features |
-| Dark Slate | #2D3436 | Text, contrast |
-| Coral | #FF6B6B | Error states, alerts |
+| Color       | Hex     | Usage                             |
+| ----------- | ------- | --------------------------------- |
+| Ocean Blue  | #0066CC | Primary buttons, headers, accents |
+| Sandy Beige | #F4E4C1 | Secondary buttons, backgrounds    |
+| Eco Green   | #00CC66 | Success states, accent features   |
+| Dark Slate  | #2D3436 | Text, contrast                    |
+| Coral       | #FF6B6B | Error states, alerts              |
 
 ## API Integrations
 
 ### OpenWeatherMap
+
 - Endpoint: `https://api.openweathermap.org/data/2.5/weather`
 - Free tier available
 - Set API key in environment variables
 
 ### Leaflet Map
+
 - Endpoint: `https://unpkg.com/leaflet@1.9.4`
 - OpenStreetMap tiles included
 - No API key required
@@ -130,6 +146,7 @@ ShoreSquad/
 ## Environment Variables
 
 Create `.env` file (not included in git):
+
 ```
 WEATHER_API_KEY=your_openweathermap_key
 MAP_CENTER_LAT=34.0195
@@ -162,11 +179,13 @@ MAP_CENTER_LNG=-118.4912
 ## JavaScript Features
 
 ### State Management
+
 - Centralized `AppState` object
 - Persistent storage with localStorage
 - Event-driven architecture
 
 ### Interactivity
+
 - Geolocation API for user positioning
 - Weather API integration
 - Modal dialogs for event creation
@@ -174,6 +193,7 @@ MAP_CENTER_LNG=-118.4912
 - Real-time notifications
 
 ### Performance
+
 - Event delegation for dynamic elements
 - RequestIdleCallback for optimization
 - Intersection Observer for lazy loading
@@ -207,6 +227,7 @@ MIT License - Feel free to use ShoreSquad for your beach cleanup initiatives!
 ## Support
 
 For issues, questions, or suggestions:
+
 - Open an issue on GitHub
 - Check existing documentation
 - Test in different browsers

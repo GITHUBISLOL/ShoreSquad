@@ -218,6 +218,32 @@ document.getElementById('create-event-btn').addEventListener('click', () => {
     document.getElementById('event-modal').classList.remove('hidden');
 });
 
+// ---- NEXT CLEANUP BUTTON ----
+document.getElementById('join-next-cleanup-btn').addEventListener('click', () => {
+    const nextCleanupEvent = {
+        id: 'event_pasir_ris_' + Date.now(),
+        name: 'Pasir Ris Beach Cleanup',
+        location: 'Pasir Ris - Street View Asia',
+        coordinates: { lat: 1.381497, lng: 103.955574 },
+        description: 'Join us for a beach cleanup at Pasir Ris! Help keep our beaches clean and beautiful.',
+        participants: [AppState.currentUser.id],
+        createdBy: AppState.currentUser.id,
+        createdAt: new Date().toISOString(),
+        featured: true
+    };
+    
+    // Check if user is already participating
+    const alreadyJoined = AppState.events.some(e => e.id === nextCleanupEvent.id && e.participants.includes(AppState.currentUser.id));
+    
+    if (alreadyJoined) {
+        showNotification('✅ You\'re already joined for this cleanup!', 'info');
+    } else {
+        AppState.events.push(nextCleanupEvent);
+        saveEventsToStorage();
+        showNotification('🌊 You\'ve joined the Pasir Ris cleanup! See you there! 🎉', 'success');
+    }
+});
+
 // ---- EVENT MODAL ----
 document.getElementById('event-cancel').addEventListener('click', () => {
     document.getElementById('event-modal').classList.add('hidden');

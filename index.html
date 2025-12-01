@@ -1,191 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Rally your crew, track weather, and hit the next beach cleanup with ShoreSquad!">
-    <meta name="theme-color" content="#0066CC">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Rally your crew, track weather, and hit the next beach cleanup with ShoreSquad!"
+    />
+    <meta name="theme-color" content="#0066CC" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+
     <title>ShoreSquad - Beach Cleanup Crew</title>
-    
+
     <!-- CSS -->
-    <link rel="stylesheet" href="css/styles.css">
-    
+    <link rel="stylesheet" href="css/styles.css" />
+
     <!-- Leaflet Map Library (lightweight) -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.min.css" />
-    
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.min.css"
+    />
+
     <!-- Preconnect for performance -->
-    <link rel="preconnect" href="https://api.openweathermap.org">
-    <link rel="preconnect" href="https://unpkg.com">
-</head>
-<body>
+    <link rel="preconnect" href="https://api.openweathermap.org" />
+    <link rel="preconnect" href="https://unpkg.com" />
+  </head>
+  <body>
     <!-- Header -->
     <header class="header">
-        <div class="header-content">
-            <h1 class="logo">🌊 ShoreSquad</h1>
-            <nav class="nav-main">
-                <button class="nav-btn active" data-view="map" aria-label="Map View">
-                    <span class="icon">🗺️</span>
-                    <span class="label">Map</span>
-                </button>
-                <button class="nav-btn" data-view="crew" aria-label="Crew View">
-                    <span class="icon">👥</span>
-                    <span class="label">Crew</span>
-                </button>
-                <button class="nav-btn" data-view="profile" aria-label="Profile View">
-                    <span class="icon">👤</span>
-                    <span class="label">Profile</span>
-                </button>
-            </nav>
-        </div>
+      <div class="header-content">
+        <h1 class="logo">🌊 ShoreSquad</h1>
+        <nav class="nav-main">
+          <button class="nav-btn active" data-view="map" aria-label="Map View">
+            <span class="icon">🗺️</span>
+            <span class="label">Map</span>
+          </button>
+          <button class="nav-btn" data-view="crew" aria-label="Crew View">
+            <span class="icon">👥</span>
+            <span class="label">Crew</span>
+          </button>
+          <button class="nav-btn" data-view="profile" aria-label="Profile View">
+            <span class="icon">👤</span>
+            <span class="label">Profile</span>
+          </button>
+        </nav>
+      </div>
     </header>
 
     <!-- Main Container -->
     <main class="container">
-        
-        <!-- Map View -->
-        <section id="map-view" class="view active">
-            <div class="map-header">
-                <h2>Find Beach Cleanups Near You</h2>
-                <div class="weather-widget">
-                    <span id="weather-icon" class="weather-icon">☀️</span>
-                    <span id="weather-temp">Loading...</span>
-                    <span id="weather-condition">Weather</span>
-                </div>
-            </div>
-            
-            <div id="map" class="map-container" role="region" aria-label="Interactive map showing nearby beach cleanups"></div>
-            
-            <div class="map-controls">
-                <button id="locate-btn" class="btn btn-primary" aria-label="Find my location">
-                    📍 My Location
-                </button>
-                <button id="create-event-btn" class="btn btn-accent" aria-label="Create a new cleanup event">
-                    ➕ Start Cleanup
-                </button>
-            </div>
-        </section>
+      <!-- Map View -->
+      <section id="map-view" class="view active">
+        <div class="map-header">
+          <h2>Find Beach Cleanups Near You</h2>
+          <div class="weather-widget">
+            <span id="weather-icon" class="weather-icon">☀️</span>
+            <span id="weather-temp">Loading...</span>
+            <span id="weather-condition">Weather</span>
+          </div>
+        </div>
 
-        <!-- Crew View -->
-        <section id="crew-view" class="view">
-            <div class="crew-header">
-                <h2>Your Crew</h2>
-                <button id="invite-crew-btn" class="btn btn-secondary" aria-label="Invite friends to your crew">
-                    Invite
-                </button>
-            </div>
-            
-            <div id="crew-list" class="crew-list">
-                <p class="placeholder">No crew members yet. Start your squad!</p>
-            </div>
+        <!-- Next Cleanup Spotlight -->
+        <div class="next-cleanup-spotlight">
+          <div class="spotlight-header">
+            <span class="spotlight-badge">🎯 Next Cleanup</span>
+            <h3>Pasir Ris Beach Cleanup</h3>
+          </div>
+          <p class="spotlight-description">Street View Asia - Pasir Ris</p>
+          <p class="spotlight-coords">📍 1.381497, 103.955574</p>
+          
+          <!-- Google Maps Iframe -->
+          <iframe
+            class="google-maps-embed"
+            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1971.6378450537166!2d103.955574!3d1.381497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2ssg!4v1701388800000!5m2!1sen!2ssg"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Next Cleanup Location - Pasir Ris Beach"
+            aria-label="Google Map showing next cleanup location at Pasir Ris"
+          ></iframe>
+          
+          <button id="join-next-cleanup-btn" class="btn btn-accent full-width">
+            🌊 Join This Cleanup
+          </button>
+        </div>
 
-            <div class="crew-stats">
-                <div class="stat-card">
-                    <h3>Cleanups Done</h3>
-                    <p class="stat-value" id="cleanup-count">0</p>
-                </div>
-                <div class="stat-card">
-                    <h3>Total Impact</h3>
-                    <p class="stat-value" id="impact-count">0 lbs</p>
-                </div>
-                <div class="stat-card">
-                    <h3>Team Streak</h3>
-                    <p class="stat-value" id="streak-count">0 days</p>
-                </div>
-            </div>
-        </section>
+        <div
+          id="map"
+          class="map-container"
+          role="region"
+          aria-label="Interactive map showing nearby beach cleanups"
+        ></div>
 
-        <!-- Profile View -->
-        <section id="profile-view" class="view">
-            <div class="profile-header">
-                <div class="profile-avatar" id="profile-avatar">🏄</div>
-                <h2 id="profile-name">Shore Explorer</h2>
-                <p id="profile-bio">Beach cleanup enthusiast</p>
-            </div>
+        <div class="map-controls">
+          <button
+            id="locate-btn"
+            class="btn btn-primary"
+            aria-label="Find my location"
+          >
+            📍 My Location
+          </button>
+          <button
+            id="create-event-btn"
+            class="btn btn-accent"
+            aria-label="Create a new cleanup event"
+          >
+            ➕ Start Cleanup
+          </button>
+        </div>
+      </section>
 
-            <div class="profile-stats">
-                <div class="badge">
-                    <span class="badge-icon">🌊</span>
-                    <span>Wave Rider</span>
-                </div>
-                <div class="badge">
-                    <span class="badge-icon">🌱</span>
-                    <span>Eco Warrior</span>
-                </div>
-                <div class="badge">
-                    <span class="badge-icon">🏅</span>
-                    <span>Team Player</span>
-                </div>
-            </div>
+      <!-- Crew View -->
+      <section id="crew-view" class="view">
+        <div class="crew-header">
+          <h2>Your Crew</h2>
+          <button
+            id="invite-crew-btn"
+            class="btn btn-secondary"
+            aria-label="Invite friends to your crew"
+          >
+            Invite
+          </button>
+        </div>
 
-            <div class="settings-section">
-                <h3>Settings</h3>
-                <label class="setting-item">
-                    <input type="checkbox" id="notifications-toggle" checked>
-                    <span>Enable Notifications</span>
-                </label>
-                <label class="setting-item">
-                    <input type="checkbox" id="location-toggle" checked>
-                    <span>Share Location with Crew</span>
-                </label>
-                <button id="export-data-btn" class="btn btn-secondary">Download My Data</button>
-            </div>
-        </section>
+        <div id="crew-list" class="crew-list">
+          <p class="placeholder">No crew members yet. Start your squad!</p>
+        </div>
 
+        <div class="crew-stats">
+          <div class="stat-card">
+            <h3>Cleanups Done</h3>
+            <p class="stat-value" id="cleanup-count">0</p>
+          </div>
+          <div class="stat-card">
+            <h3>Total Impact</h3>
+            <p class="stat-value" id="impact-count">0 lbs</p>
+          </div>
+          <div class="stat-card">
+            <h3>Team Streak</h3>
+            <p class="stat-value" id="streak-count">0 days</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Profile View -->
+      <section id="profile-view" class="view">
+        <div class="profile-header">
+          <div class="profile-avatar" id="profile-avatar">🏄</div>
+          <h2 id="profile-name">Shore Explorer</h2>
+          <p id="profile-bio">Beach cleanup enthusiast</p>
+        </div>
+
+        <div class="profile-stats">
+          <div class="badge">
+            <span class="badge-icon">🌊</span>
+            <span>Wave Rider</span>
+          </div>
+          <div class="badge">
+            <span class="badge-icon">🌱</span>
+            <span>Eco Warrior</span>
+          </div>
+          <div class="badge">
+            <span class="badge-icon">🏅</span>
+            <span>Team Player</span>
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <h3>Settings</h3>
+          <label class="setting-item">
+            <input type="checkbox" id="notifications-toggle" checked />
+            <span>Enable Notifications</span>
+          </label>
+          <label class="setting-item">
+            <input type="checkbox" id="location-toggle" checked />
+            <span>Share Location with Crew</span>
+          </label>
+          <button id="export-data-btn" class="btn btn-secondary">
+            Download My Data
+          </button>
+        </div>
+      </section>
     </main>
 
     <!-- Modal for Event Creation -->
     <div id="event-modal" class="modal hidden">
-        <div class="modal-content">
-            <button class="modal-close" aria-label="Close modal">&times;</button>
-            <h2>Start a Beach Cleanup</h2>
-            
-            <form id="event-form">
-                <div class="form-group">
-                    <label for="event-name">Event Name</label>
-                    <input type="text" id="event-name" placeholder="e.g., Marina Cleanup" required>
-                </div>
+      <div class="modal-content">
+        <button class="modal-close" aria-label="Close modal">&times;</button>
+        <h2>Start a Beach Cleanup</h2>
 
-                <div class="form-group">
-                    <label for="event-date">Date & Time</label>
-                    <input type="datetime-local" id="event-date" required>
-                </div>
+        <form id="event-form">
+          <div class="form-group">
+            <label for="event-name">Event Name</label>
+            <input
+              type="text"
+              id="event-name"
+              placeholder="e.g., Marina Cleanup"
+              required
+            />
+          </div>
 
-                <div class="form-group">
-                    <label for="event-location">Beach Location</label>
-                    <input type="text" id="event-location" placeholder="e.g., Santa Monica Beach" required>
-                </div>
+          <div class="form-group">
+            <label for="event-date">Date & Time</label>
+            <input type="datetime-local" id="event-date" required />
+          </div>
 
-                <div class="form-group">
-                    <label for="event-description">Description</label>
-                    <textarea id="event-description" placeholder="What's the vibe?" rows="3"></textarea>
-                </div>
+          <div class="form-group">
+            <label for="event-location">Beach Location</label>
+            <input
+              type="text"
+              id="event-location"
+              placeholder="e.g., Santa Monica Beach"
+              required
+            />
+          </div>
 
-                <div class="form-group">
-                    <label for="event-max-people">Max People</label>
-                    <input type="number" id="event-max-people" min="2" max="500" value="10">
-                </div>
+          <div class="form-group">
+            <label for="event-description">Description</label>
+            <textarea
+              id="event-description"
+              placeholder="What's the vibe?"
+              rows="3"
+            ></textarea>
+          </div>
 
-                <button type="submit" class="btn btn-primary full-width">Create Event 🎉</button>
-                <button type="button" class="btn btn-secondary full-width" id="event-cancel">Cancel</button>
-            </form>
-        </div>
+          <div class="form-group">
+            <label for="event-max-people">Max People</label>
+            <input
+              type="number"
+              id="event-max-people"
+              min="2"
+              max="500"
+              value="10"
+            />
+          </div>
+
+          <button type="submit" class="btn btn-primary full-width">
+            Create Event 🎉
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary full-width"
+            id="event-cancel"
+          >
+            Cancel
+          </button>
+        </form>
+      </div>
     </div>
 
     <!-- Notification Container -->
-    <div id="notification-container" class="notification-container" role="region" aria-live="polite" aria-atomic="true"></div>
+    <div
+      id="notification-container"
+      class="notification-container"
+      role="region"
+      aria-live="polite"
+      aria-atomic="true"
+    ></div>
 
     <!-- JavaScript -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.min.js"></script>
     <script src="js/app.js"></script>
-    
+
     <!-- PWA Service Worker -->
     <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js').catch(err => console.log('SW registration failed'));
-        }
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("sw.js")
+          .catch((err) => console.log("SW registration failed"));
+      }
     </script>
-</body>
+  </body>
 </html>
