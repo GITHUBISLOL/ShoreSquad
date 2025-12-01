@@ -160,15 +160,15 @@ async function fetchWeather() {
         }
         
         const apiKey = 'DEMO'; // Replace with real API key
-        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${AppState.userLocation.lat}&lon=${AppState.userLocation.lng}&units=imperial&appid=${apiKey}`;
+        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${AppState.userLocation.lat}&lon=${AppState.userLocation.lng}&units=metric&appid=${apiKey}`;
         
         // Using mock data for demo (API requires valid key)
         displayWeatherData({
-            temp: 72,
+            temp: 22,
             condition: 'Sunny',
             icon: '☀️',
             humidity: 65,
-            windSpeed: 8
+            windSpeed: 3.6
         });
         
     } catch (error) {
@@ -177,7 +177,7 @@ async function fetchWeather() {
 }
 
 function displayWeatherData(weather) {
-    document.getElementById('weather-temp').textContent = `${Math.round(weather.temp)}°F`;
+    document.getElementById('weather-temp').textContent = `${Math.round(weather.temp)}°C`;
     document.getElementById('weather-condition').textContent = weather.condition;
     document.getElementById('weather-icon').textContent = weather.icon;
 }
@@ -318,7 +318,7 @@ function displayProfileData() {
     
     // Update stats
     document.getElementById('cleanup-count').textContent = AppState.currentUser.stats.cleanupsJoined;
-    document.getElementById('impact-count').textContent = AppState.currentUser.stats.totalImpact + ' lbs';
+    document.getElementById('impact-count').textContent = AppState.currentUser.stats.totalImpact + ' kg';
     document.getElementById('streak-count').textContent = AppState.currentUser.stats.streak + ' days';
 }
 
