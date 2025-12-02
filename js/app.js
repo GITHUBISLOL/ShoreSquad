@@ -154,15 +154,31 @@ function getUserLocation() {
 // ---- WEATHER ----
 async function fetchWeather() {
     try {
-        if (!AppState.userLocation) {
-            // Use default location if no user location
-            AppState.userLocation = { lat: 34.0195, lng: -118.4912 };
+        // Fetch 4-day weather forecast from NEA API
+        const forecastUrl = 'https://api.data.gov.sg/v1/environment/4-day-weather-forecast';
+        
+        const response = await fetch(forecastUrl);
+        const data = await response.json();
+        
+        if (data.items && data.items.length > 0) {
+            const forecastData = data.items[0];
+            displayForecast(forecastData);
+            
+            // Update header with current conditions (use first day forecast)
+            if (forecastData.forecasts && forecastData.forecasts.length > 0) {
+                const today = forecastData.forecasts[0];
+                displayWeatherData({
+                    temp: Math.round((today.temperature.low + today.temperature.high) / 2),
+                    condition: today.forecast,
+                    icon: getWeatherIcon(today.forecast),
+                    humidity: (today.relative_humidity.low + today.relative_humidity.high) / 2,
+                    windSpeed: (today.wind.speed.low + today.wind.speed.high) / 2
+                });
+            }
         }
-        
-        const apiKey = 'DEMO'; // Replace with real API key
-        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${AppState.userLocation.lat}&lon=${AppState.userLocation.lng}&units=metric&appid=${apiKey}`;
-        
-        // Using mock data for demo (API requires valid key)
+    } catch (error) {
+        console.error('Weather fetch error:', error);
+        // Fallback to mock data
         displayWeatherData({
             temp: 22,
             condition: 'Sunny',
@@ -170,10 +186,57 @@ async function fetchWeather() {
             humidity: 65,
             windSpeed: 3.6
         });
-        
-    } catch (error) {
-        console.error('Weather fetch error:', error);
     }
+}
+
+function displayForecast(forecastData) {
+    const container = document.getElementById('forecast-container');
+    container.innerHTML = '';
+    
+    if (!forecastData.forecasts) return;
+    
+    forecastData.forecasts.forEach((day, index) => {
+        const date = new Date(day.date);
+        const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
+        const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        
+        const card = document.createElement('div');
+        card.className = 'forecast-card';
+        card.innerHTML = `
+            <div class="forecast-date">${dayName}</div>
+            <div class="forecast-date" style="font-size: 0.8rem; color: #999;">${dateStr}</div>
+            <div class="forecast-icon">${getWeatherIcon(day.forecast)}</div>
+            <div class="forecast-condition">${day.forecast}</div>
+            <div class="forecast-temps">
+                <span class="temp-low">${day.temperature.low}°C</span>
+                <span class="temp-high">${day.temperature.high}°C</span>
+            </div>
+            <div class="forecast-details">
+                <span class="humidity">💧 ${Math.round((day.relative_humidity.low + day.relative_humidity.high) / 2)}%</span>
+                <span class="wind">💨 ${Math.round((day.wind.speed.low + day.wind.speed.high) / 2)} m/s</span>
+            </div>
+        `;
+        container.appendChild(card);
+    });
+    
+    // Update last modified timestamp
+    if (forecastData.update_timestamp) {
+        const updateTime = new Date(forecastData.update_timestamp);
+        const timeStr = updateTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+        document.getElementById('forecast-update').textContent = `Last updated: ${timeStr}`;
+    }
+}
+
+function getWeatherIcon(condition) {
+    const conditionLower = condition.toLowerCase();
+    if (conditionLower.includes('thundery') || conditionLower.includes('thunder')) return '⛈️';
+    if (conditionLower.includes('shower') || conditionLower.includes('rain')) return '🌧️';
+    if (conditionLower.includes('cloud') || conditionLower.includes('cloudy')) return '☁️';
+    if (conditionLower.includes('sunny') || conditionLower.includes('sun')) return '☀️';
+    if (conditionLower.includes('clear')) return '🌤️';
+    if (conditionLower.includes('wind')) return '💨';
+    if (conditionLower.includes('haze')) return '😶';
+    return '🌥️';
 }
 
 function displayWeatherData(weather) {

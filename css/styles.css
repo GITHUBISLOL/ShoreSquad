@@ -164,6 +164,108 @@ body {
     font-size: 1.5rem;
 }
 
+/* ---- 4-DAY WEATHER FORECAST ---- */
+.forecast-section {
+    background: linear-gradient(135deg, #E0F7FF 0%, #B3E5FC 100%);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.forecast-section h3 {
+    color: var(--color-dark);
+    margin-bottom: var(--spacing-lg);
+    font-size: 1.25rem;
+}
+
+.forecast-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.forecast-card {
+    background: white;
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+    transition: var(--transition);
+    border: 2px solid transparent;
+}
+
+.forecast-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
+    border-color: var(--color-primary);
+}
+
+.forecast-date {
+    font-weight: 700;
+    color: var(--color-primary);
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.forecast-icon {
+    font-size: 2.5rem;
+    margin: var(--spacing-sm) 0;
+}
+
+.forecast-condition {
+    font-size: 0.85rem;
+    color: #555;
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.3;
+    min-height: 2.6rem;
+}
+
+.forecast-temps {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-sm) 0;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.temp-low {
+    color: #0288D1;
+    font-weight: 600;
+}
+
+.temp-high {
+    color: var(--color-coral);
+    font-weight: 600;
+}
+
+.forecast-details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    font-size: 0.75rem;
+    color: #666;
+}
+
+.humidity,
+.wind {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+}
+
+.forecast-timestamp {
+    font-size: 0.85rem;
+    color: #666;
+    text-align: center;
+    font-style: italic;
+}
+
 .map-container {
     width: 100%;
     height: 500px;
@@ -647,6 +749,10 @@ body {
 
     .map-controls {
         width: 100%;
+    }
+
+    .forecast-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .google-maps-embed {
