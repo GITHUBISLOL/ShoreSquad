@@ -1,4 +1,4 @@
-# Service Worker for ShoreSquad PWA
+// Service Worker for ShoreSquad PWA
 
 const CACHE_NAME = 'shoresquad-v1';
 const urlsToCache = [
@@ -10,7 +10,7 @@ const urlsToCache = [
   'https://unpkg.com/leaflet@1.9.4/dist/leaflet.min.js'
 ];
 
-# Install event
+// Install event
 self.addEventListener('install', (event) => {
   console.log('🌊 Service Worker installing...');
   event.waitUntil(
@@ -20,7 +20,7 @@ self.addEventListener('install', (event) => {
   );
 });
 
-# Activate event
+// Activate event
 self.addEventListener('activate', (event) => {
   console.log('🌊 Service Worker activated');
   event.waitUntil(
@@ -36,7 +36,7 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-# Fetch event - Network first, fall back to cache
+// Fetch event - Network first, fall back to cache
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
 
@@ -55,3 +55,4 @@ self.addEventListener('fetch', (event) => {
       })
   );
 });
+``

@@ -210,7 +210,6 @@ body {
     color: #666;
     font-size: 0.9rem;
 }
-
 /* ---- 4-DAY WEATHER FORECAST ---- */
 .forecast-section {
     background: linear-gradient(135deg, rgba(224, 247, 255, 0.8) 0%, rgba(179, 229, 252, 0.8) 100%);
@@ -1444,90 +1443,8 @@ body.psychedelic-mode .modal {
     pointer-events: none;
 }
 
-/* ==================== RESPONSIVE ACCOUNT SETTINGS ==================== */
-
+/* ---- RESPONSIVE DESIGN ---- */
 @media (max-width: 768px) {
-  .page-header h1 {
-    font-size: 1.5rem;
-  }
-
-  .tab-btn {
-    padding: 0.85rem 1rem;
-    font-size: 0.85rem;
-  }
-
-  .settings-block {
-    padding: 1rem;
-  }
-
-  .profile-info {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .profile-avatar {
-    width: 50px;
-    height: 50px;
-    font-size: 2rem;
-  }
-
-  .profile-stats-compact {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  }
-
-  .badges-list {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  .page-header {
-    padding: 1rem 0.75rem;
-  }
-
-  .page-header h1 {
-    font-size: 1.3rem;
-  }
-
-  .tabs-nav {
-    padding: 0 0.5rem;
-  }
-
-  .tab-btn {
-    padding: 0.7rem 0.8rem;
-    font-size: 0.8rem;
-  }
-
-  .settings-block {
-    padding: 1rem 0.75rem;
-  }
-
-  .font-select,
-  .checkbox-item {
-    font-size: 0.9rem;
-  }
-
-  .profile-stats-compact {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .badges-list {
-    grid-template-columns: 1fr;
-  }
-
-  .badge-compact {
-    flex-direction: row;
-    justify-content: flex-start;
-    gap: 0.75rem;
-  }
-
-  .badge-icon {
-    font-size: 1.5rem;
-  }
-
-  .badge-compact span:last-child {
-    text-align: left;
-  }
-}
-
-
+    .container {
+        padding: var(--spacing-md);
+    }
