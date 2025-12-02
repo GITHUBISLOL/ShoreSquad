@@ -419,6 +419,89 @@ document.getElementById('export-data-btn').addEventListener('click', () => {
     showNotification('📥 Data exported!', 'success');
 });
 
+// ---- TAB SWITCHING ----
+document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        const tabName = e.target.dataset.tab;
+        
+        // Remove active class from all tabs
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        
+        // Add active class to clicked tab
+        e.target.classList.add('active');
+        document.getElementById(tabName).classList.add('active');
+        
+        // Save preference
+        localStorage.setItem('activeTab', tabName);
+    });
+});
+
+// Restore last active tab
+const activeTab = localStorage.getItem('activeTab') || 'account-settings';
+const activeBtn = document.querySelector(`[data-tab="${activeTab}"]`);
+if (activeBtn) {
+    activeBtn.click();
+}
+
+// ---- FONT SIZE CONTROL ----
+document.getElementById('font-size').addEventListener('change', (e) => {
+    const fontSize = e.target.value;
+    const fontSizes = {
+        small: '0.9rem',
+        medium: '1rem',
+        large: '1.15rem',
+        'x-large': '1.3rem'
+    };
+    
+    // Apply to preview text
+    const preview = document.querySelector('.font-preview p');
+    if (preview) {
+        preview.style.fontSize = fontSizes[fontSize];
+    }
+    
+    // Save preference
+    localStorage.setItem('fontSize', fontSize);
+    
+    showNotification(`📝 Font size changed to ${fontSize}`, 'info');
+});
+
+// Restore font size preference
+const savedFontSize = localStorage.getItem('fontSize') || 'medium';
+const fontSizeSelect = document.getElementById('font-size');
+if (fontSizeSelect) {
+    fontSizeSelect.value = savedFontSize;
+    fontSizeSelect.dispatchEvent(new Event('change'));
+}
+
+// ---- ACCESSIBILITY SETTINGS ----
+document.getElementById('auto-mark-read').addEventListener('change', (e) => {
+    localStorage.setItem('autoMarkRead', e.target.checked);
+    showNotification(
+        `🔖 Auto-mark as read ${e.target.checked ? 'enabled' : 'disabled'}`,
+        'info'
+    );
+});
+
+document.getElementById('video-overlap').addEventListener('change', (e) => {
+    localStorage.setItem('videoOptimizeAccessibility', e.target.checked);
+    showNotification(
+        `🎥 Video accessibility optimization ${e.target.checked ? 'enabled' : 'disabled'}`,
+        'info'
+    );
+});
+
+// Restore accessibility preferences
+const autoMarkRead = localStorage.getItem('autoMarkRead') === 'true';
+const videoOptimize = localStorage.getItem('videoOptimizeAccessibility') === 'true';
+
+if (document.getElementById('auto-mark-read')) {
+    document.getElementById('auto-mark-read').checked = autoMarkRead;
+}
+if (document.getElementById('video-overlap')) {
+    document.getElementById('video-overlap').checked = videoOptimize;
+}
+
 // ---- NOTIFICATIONS ----
 function setupNotifications() {
     if ('Notification' in window && Notification.permission === 'default') {

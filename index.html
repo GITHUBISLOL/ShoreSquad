@@ -174,42 +174,177 @@
         </div>
       </section>
 
-      <!-- Profile View -->
+      <!-- Profile View - Account Settings -->
       <section id="profile-view" class="view">
-        <div class="profile-header">
-          <div class="profile-avatar" id="profile-avatar">🏄</div>
-          <h2 id="profile-name">Shore Explorer</h2>
-          <p id="profile-bio">Beach cleanup enthusiast</p>
+        <!-- Page Header -->
+        <div class="page-header">
+          <h1>Account Settings</h1>
         </div>
 
-        <div class="profile-stats">
-          <div class="badge">
-            <span class="badge-icon">🌊</span>
-            <span>Wave Rider</span>
-          </div>
-          <div class="badge">
-            <span class="badge-icon">🌱</span>
-            <span>Eco Warrior</span>
-          </div>
-          <div class="badge">
-            <span class="badge-icon">🏅</span>
-            <span>Team Player</span>
-          </div>
-        </div>
-
-        <div class="settings-section">
-          <h3>Settings</h3>
-          <label class="setting-item">
-            <input type="checkbox" id="notifications-toggle" checked />
-            <span>Enable Notifications</span>
-          </label>
-          <label class="setting-item">
-            <input type="checkbox" id="location-toggle" checked />
-            <span>Share Location with Crew</span>
-          </label>
-          <button id="export-data-btn" class="btn btn-secondary">
-            Download My Data
+        <!-- Tab Navigation -->
+        <div class="tabs-nav">
+          <button
+            class="tab-btn active"
+            data-tab="account-settings"
+            aria-label="Account Settings"
+          >
+            Account Settings
           </button>
+          <button
+            class="tab-btn"
+            data-tab="discussions"
+            aria-label="Discussions"
+          >
+            Discussions
+          </button>
+        </div>
+
+        <!-- Tab Content: Account Settings -->
+        <div id="account-settings" class="tab-content active">
+          <!-- Font Settings -->
+          <div class="settings-block">
+            <h2>Font Settings</h2>
+
+            <div class="setting-item-group">
+              <label for="font-size" class="setting-label">Font Size</label>
+              <select id="font-size" class="font-select">
+                <option value="small">Small</option>
+                <option value="medium" selected>Medium</option>
+                <option value="large">Large</option>
+                <option value="x-large">X-Large</option>
+              </select>
+            </div>
+
+            <div class="font-preview">
+              <p>The quick brown fox jumps over the lazy dog.</p>
+            </div>
+          </div>
+
+          <!-- Reading Content -->
+          <div class="settings-block">
+            <h2>Reading Content</h2>
+            <p class="setting-description">
+              Some tools automatically mark content as read as you scroll it
+              into view. If you use an assistive technology such as a screen
+              reader then you may wish to disable this feature by ticking the
+              box below.
+            </p>
+
+            <label class="checkbox-item">
+              <input type="checkbox" id="auto-mark-read" />
+              <span
+                >Do not automatically mark items as read as the page
+                scrolls</span
+              >
+            </label>
+          </div>
+
+          <!-- Video Settings -->
+          <div class="settings-block">
+            <h2>Video Settings</h2>
+            <p class="setting-description">
+              This setting ensures that assistive technologies can detect
+              videos. As a consequence, videos will overlap menus. It does not
+              influence the accessibility of specific players.
+            </p>
+
+            <label class="checkbox-item">
+              <input type="checkbox" id="video-overlap" />
+              <span
+                >Optimise video presentation for programmatically driven
+                assistive technologies</span
+              >
+            </label>
+          </div>
+
+          <!-- Notifications Setting -->
+          <div class="settings-block">
+            <h2>Notifications</h2>
+            <label class="checkbox-item">
+              <input type="checkbox" id="notifications-toggle" checked />
+              <span>Enable Notifications</span>
+            </label>
+          </div>
+
+          <!-- Location Sharing -->
+          <div class="settings-block">
+            <h2>Location & Privacy</h2>
+            <label class="checkbox-item">
+              <input type="checkbox" id="location-toggle" checked />
+              <span>Share Location with Crew</span>
+            </label>
+          </div>
+
+          <!-- Data Management -->
+          <div class="settings-block">
+            <h2>Data Management</h2>
+            <button id="export-data-btn" class="btn btn-secondary">
+              📥 Download My Data
+            </button>
+          </div>
+
+          <!-- Profile Info -->
+          <div class="settings-block">
+            <h2>Profile Information</h2>
+            <div class="profile-info">
+              <div class="profile-avatar" id="profile-avatar">🏄</div>
+              <div class="profile-details">
+                <h3 id="profile-name">Shore Explorer</h3>
+                <p id="profile-bio">Beach cleanup enthusiast</p>
+              </div>
+            </div>
+
+            <div class="profile-stats-compact">
+              <div class="stat">
+                <span class="stat-label">Cleanups Done</span>
+                <span class="stat-value" id="cleanup-count">0</span>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Total Impact</span>
+                <span class="stat-value" id="impact-count">0 kg</span>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Team Streak</span>
+                <span class="stat-value" id="streak-count">0 days</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Achievements -->
+          <div class="settings-block">
+            <h2>Achievements</h2>
+            <div class="badges-list">
+              <div class="badge-compact">
+                <span class="badge-icon">🌊</span>
+                <span>Wave Rider</span>
+              </div>
+              <div class="badge-compact">
+                <span class="badge-icon">🌱</span>
+                <span>Eco Warrior</span>
+              </div>
+              <div class="badge-compact">
+                <span class="badge-icon">🏅</span>
+                <span>Team Player</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab Content: Discussions -->
+        <div id="discussions" class="tab-content">
+          <div class="settings-block">
+            <h2>Discussions</h2>
+            <p class="setting-description">
+              Your discussion threads and community conversations will appear
+              here. Join the conversation and share your beach cleanup ideas
+              with the ShoreSquad community!
+            </p>
+            <div style="text-align: center; padding: 3rem 0; color: #999">
+              <p style="font-size: 1.1rem">
+                No discussions yet. Start one today! 💬
+              </p>
+            </div>
+          </div>
         </div>
       </section>
     </main>
