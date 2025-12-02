@@ -532,3 +532,56 @@ function deleteEvent(eventId) {
 // ---- CONSOLE LOGGING ----
 console.log('%c🌊 ShoreSquad v1.0', 'color: #0066CC; font-size: 20px; font-weight: bold;');
 console.log('%cRally your crew, track weather, and hit the next beach cleanup!', 'color: #00CC66; font-size: 14px;');
+
+// ---- PSYCHEDELIC MODE (SECRET) ----
+let psychedelicMode = false;
+
+document.addEventListener('keydown', (e) => {
+    // Trigger psychedelic mode with 'k' key
+    if (e.key === 'k' || e.key === 'K') {
+        togglePsychedelicMode();
+    }
+});
+
+function togglePsychedelicMode() {
+    psychedelicMode = !psychedelicMode;
+    const body = document.body;
+    
+    if (psychedelicMode) {
+        body.classList.add('psychedelic-mode');
+        showNotification('🌈✨ Welcome to the FEVER DREAM! ✨🌈', 'success');
+        console.log('%c🌈 PSYCHEDELIC MODE ACTIVATED! 🌈', 'color: #FF00FF; font-size: 30px; font-weight: bold; text-shadow: 0 0 10px #00FFFF;');
+        playPsychedelicSound();
+    } else {
+        body.classList.remove('psychedelic-mode');
+        showNotification('😴 Back to reality...', 'info');
+        console.log('%c⚡ Psychedelic mode deactivated ⚡', 'color: #0066CC; font-size: 16px;');
+    }
+}
+
+function playPsychedelicSound() {
+    try {
+        // Create a fun little sound effect
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const now = audioContext.currentTime;
+        
+        // Create a series of beeps
+        for (let i = 0; i < 3; i++) {
+            const osc = audioContext.createOscillator();
+            const gain = audioContext.createGain();
+            
+            osc.connect(gain);
+            gain.connect(audioContext.destination);
+            
+            osc.frequency.value = 200 + (i * 150);
+            gain.gain.setValueAtTime(0.1, now + (i * 0.1));
+            gain.gain.exponentialRampToValueAtTime(0.01, now + (i * 0.1) + 0.1);
+            
+            osc.start(now + (i * 0.1));
+            osc.stop(now + (i * 0.1) + 0.1);
+        }
+    } catch (error) {
+        // Audio not supported or blocked
+        console.log('Audio unavailable');
+    }
+}

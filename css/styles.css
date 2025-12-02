@@ -889,3 +889,216 @@ body {
         border-color: #444;
     }
 }
+
+/* ---- PSYCHEDELIC MODE (SECRET) ---- */
+body.psychedelic-mode {
+    background: linear-gradient(-45deg, #FF00FF, #00FFFF, #FFFF00, #FF00FF);
+    background-size: 400% 400%;
+    animation: psychedelic-gradient 8s ease infinite;
+    color: #FFFFFF;
+}
+
+@keyframes psychedelic-gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+body.psychedelic-mode .header {
+    background: linear-gradient(135deg, #FF00FF, #00FFFF, #FFFF00);
+    background-size: 200% 200%;
+    animation: psychedelic-shift 3s ease infinite;
+    box-shadow: 0 0 30px rgba(255, 0, 255, 0.8);
+}
+
+@keyframes psychedelic-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+body.psychedelic-mode .btn-primary {
+    background: linear-gradient(135deg, #FF00FF, #00FFFF);
+    background-size: 200% 200%;
+    animation: psychedelic-pulse 2s ease infinite;
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.8);
+}
+
+body.psychedelic-mode .btn-accent {
+    background: linear-gradient(135deg, #FFFF00, #FF00FF);
+    background-size: 200% 200%;
+    animation: psychedelic-pulse 2s ease infinite;
+    box-shadow: 0 0 20px rgba(255, 255, 0, 0.8);
+}
+
+body.psychedelic-mode .btn-secondary {
+    background: linear-gradient(135deg, #00FFFF, #FFFF00);
+    background-size: 200% 200%;
+    animation: psychedelic-pulse 2s ease infinite;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+}
+
+@keyframes psychedelic-pulse {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+body.psychedelic-mode .container {
+    background: rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 0 60px rgba(255, 0, 255, 0.3);
+    border-radius: 20px;
+    animation: psychedelic-glow 3s ease-in-out infinite;
+}
+
+@keyframes psychedelic-glow {
+    0%, 100% {
+        box-shadow: inset 0 0 60px rgba(255, 0, 255, 0.3);
+    }
+    50% {
+        box-shadow: inset 0 0 60px rgba(0, 255, 255, 0.3);
+    }
+}
+
+body.psychedelic-mode .forecast-section,
+body.psychedelic-mode .next-cleanup-spotlight,
+body.psychedelic-mode .modal-content {
+    background: linear-gradient(135deg, rgba(255, 0, 255, 0.2), rgba(0, 255, 255, 0.2));
+    box-shadow: 0 0 30px rgba(255, 0, 255, 0.6), inset 0 0 20px rgba(0, 255, 255, 0.4);
+    border: 2px solid rgba(255, 255, 0, 0.8);
+    animation: psychedelic-border 2s ease infinite;
+}
+
+@keyframes psychedelic-border {
+    0%, 100% {
+        border-color: rgba(255, 0, 255, 0.8);
+    }
+    50% {
+        border-color: rgba(0, 255, 255, 0.8);
+    }
+}
+
+body.psychedelic-mode .forecast-card,
+body.psychedelic-mode .crew-member,
+body.psychedelic-mode .badge,
+body.psychedelic-mode .stat-card {
+    background: linear-gradient(135deg, rgba(255, 0, 255, 0.15), rgba(0, 255, 255, 0.15));
+    box-shadow: 0 0 20px rgba(255, 255, 0, 0.5);
+    border: 1px solid rgba(255, 0, 255, 0.6);
+}
+
+body.psychedelic-mode .nav-btn {
+    background: rgba(255, 0, 255, 0.4) !important;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+    animation: psychedelic-float 3s ease-in-out infinite;
+}
+
+@keyframes psychedelic-float {
+    0%, 100% {
+        transform: translateY(-2px);
+    }
+    50% {
+        transform: translateY(2px);
+    }
+}
+
+body.psychedelic-mode h1,
+body.psychedelic-mode h2,
+body.psychedelic-mode h3 {
+    color: #FFFF00;
+    text-shadow: 0 0 10px #FF00FF, 0 0 20px #00FFFF;
+    animation: psychedelic-text-glow 2s ease infinite;
+}
+
+@keyframes psychedelic-text-glow {
+    0%, 100% {
+        text-shadow: 0 0 10px #FF00FF, 0 0 20px #00FFFF;
+    }
+    50% {
+        text-shadow: 0 0 20px #00FFFF, 0 0 30px #FF00FF, 0 0 40px #FFFF00;
+    }
+}
+
+body.psychedelic-mode .logo {
+    animation: psychedelic-spin 4s linear infinite;
+}
+
+@keyframes psychedelic-spin {
+    0% {
+        transform: rotateZ(0deg);
+    }
+    100% {
+        transform: rotateZ(360deg);
+    }
+}
+
+body.psychedelic-mode .map-container {
+    box-shadow: 0 0 40px rgba(255, 0, 255, 0.8), inset 0 0 40px rgba(0, 255, 255, 0.4);
+    border: 3px solid rgba(255, 255, 0, 0.8);
+    animation: psychedelic-kaleidoscope 5s linear infinite;
+}
+
+@keyframes psychedelic-kaleidoscope {
+    0% {
+        filter: hue-rotate(0deg) brightness(1.2);
+    }
+    50% {
+        filter: hue-rotate(180deg) brightness(1.5);
+    }
+    100% {
+        filter: hue-rotate(360deg) brightness(1.2);
+    }
+}
+
+body.psychedelic-mode * {
+    animation-duration: 4s !important;
+}
+
+body.psychedelic-mode .notification {
+    background: linear-gradient(135deg, rgba(255, 0, 255, 0.8), rgba(0, 255, 255, 0.8));
+    box-shadow: 0 0 30px rgba(255, 255, 0, 0.9);
+    border: 2px solid rgba(255, 255, 0, 0.9) !important;
+    color: #FFFFFF;
+    animation: psychedelic-notification 1s ease infinite;
+}
+
+@keyframes psychedelic-notification {
+    0%, 100% {
+        box-shadow: 0 0 30px rgba(255, 255, 0, 0.9);
+    }
+    50% {
+        box-shadow: 0 0 50px rgba(255, 0, 255, 1);
+    }
+}
+
+body.psychedelic-mode .modal {
+    background: radial-gradient(circle, rgba(255, 0, 255, 0.6), rgba(0, 0, 0, 0.8));
+}
+
+/* Psychedelic mode hint */
+.psychedelic-hint {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.3);
+    font-family: monospace;
+    z-index: 9999;
+    pointer-events: none;
+}
+
